@@ -5,6 +5,9 @@ class Story < ActiveRecord::Base
 	has_many :comments
 	has_many :votes
 
+	#set up acts as taggable
+	acts_as_taggable
+
 	validates :title, length: { minimum: 5}
 	validates :description, presence: true
 	validates :url, presence: true, uniqueness: { message: "Has already been submitted"}

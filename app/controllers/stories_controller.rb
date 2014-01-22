@@ -33,6 +33,9 @@ class StoriesController < ApplicationController
 			@stories = Story.order("votes_count desc, title asc, created_at desc")
 		end
 
+		#add in my pagination
+		#overwrite the @stories variabl with a paginated version
+		@stories = @stories.page(params[:page]).per(20)
 
 
 	end
@@ -108,7 +111,7 @@ class StoriesController < ApplicationController
 
 	#shortcut for getting form data
 	def story_params
-		params.require(:story).permit(:title, :description, :url)
+		params.require(:story).permit(:title, :description, :url, :tag_list)
 	end
 
 	#shortcut for finding the story from the url

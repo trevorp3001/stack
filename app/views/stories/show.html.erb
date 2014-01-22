@@ -29,6 +29,17 @@
 		<%= link_to "Delete", story_path(@story), method: :delete, class: "delete", confirm: "Are you sure you wanna get rid?" %>
 	</div>
 
+	<h3><%= pluralize @story.tags.count, "tag" %></h3>
+
+	<ul>
+		<% @story.tags.each do |tag| %>
+
+			<li><%= tag %></li>
+
+		<% end %>
+
+	</ul>
+
 	<h3><%= pluralize @story.comments.count, "comment" %> </h3>
 
 	<p>
